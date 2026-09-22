@@ -16,9 +16,10 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Welcome To Cole</h1>
+          <h1>Ezekiel Colerangle</h1>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+             I am an Electrical and Electronic Engineering student passionate about
+  technology, electronics, and programming.
           </p>
         </div>
         <button
@@ -37,19 +38,20 @@ function App() {
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#documentation-icon"></use>
           </svg>
-          <h2>Instrumentation</h2>
-          <p>Your questions, responded to</p>
+          <h2>My skiils
+          </h2>
+          <p>That i am currently working on</p>
           <ul>
             <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
+              <a href="https://github.com/ezekielcolerangle-lab" target = "_blank" > 
+              Github    
+                
               </a>
             </li>
             <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
+              <a href="#" target = "_blank" >
+                My projects
+                About me
               </a>
             </li>
           </ul>
@@ -58,8 +60,8 @@ function App() {
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#social-icon"></use>
           </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Cole community</p>
+          <h2>Connect with me</h2>
+          <p>Follow my journey in engineering and technology</p>
           <ul>
             <li>
               <a href="https://github.com/vitejs/vite" target="_blank">
@@ -106,14 +108,14 @@ function App() {
                 >
                   <use href="/icons.svg#bluesky-icon"></use>
                 </svg>
-                Bluesky
+                Whatsapp
               </a>
             </li>
           </ul>
         </div>
       </section>
 
-      <div className="ticks"></div>
+      <div ></div>
       <section id="spacer"></section>
     </>
   )
