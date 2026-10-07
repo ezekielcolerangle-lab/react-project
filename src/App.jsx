@@ -1,123 +1,69 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import Fooster from './components/Fooster.jsx'
 import './App.css'
+import Home from './page/Home.jsx'
+import AboutPage from './pages/AboutPage.jsx'
+import ContactPage from './pages/ContactPage.jsx'
+import EducationPage from './pages/EducationPage.jsx'
+import ProjectsPage from './pages/ProjectsPage.jsx'
+import ReactProject from './pages/ReactProject.jsx'
+import SkillsPage from './pages/SkillsPage.jsx'
+import SkillDetail from './pages/SkillDetail.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Ezekiel Colerangle</h1>
-          <p>
-             I am an Electrical and Electronic Engineering student passionate about
-  technology, electronics, and programming.
-          </p>
-        </div>
+    <div className="site-shell">
+      <header className="site-header">
+        <Link className="wordmark" to="/" aria-label="Ezekiel Colerangle, home" onClick={closeMenu}>
+          <span className="wordmark-mark">EC</span>
+          <span>Ezekiel Colerangle</span>
+        </Link>
         <button
+          className="nav-toggle"
           type="button"
-          className="counter"
-          onClick={() => setCount((count) => count +1)}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          Count is {count}
+          <span />
+          <span />
+          <span />
         </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>My skiils
-          </h2>
-          <p>That i am currently working on</p>
-          <ul>
-            <li>
-              <a href="https://github.com/ezekielcolerangle-lab" target = "_blank" > 
-              Github    
-                
-              </a>
-            </li>
-            <li>
-              <a href="#" target = "_blank" >
-                My projects
-                About me
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with me</h2>
-          <p>Follow my journey in engineering and technology</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Whatsapp
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div ></div>
-      <section id="spacer"></section>
-    </>
+        <nav id="primary-navigation" className={menuOpen ? 'nav-open' : ''} aria-label="Main navigation">
+          <NavLink to="/" end onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/about" end onClick={closeMenu}>About Me</NavLink>
+          <NavLink to="/skills" onClick={closeMenu}>Skills</NavLink>
+          <NavLink
+            to="/projects"
+            end
+            className={({ isActive }) => (isActive || pathname === '/react-project' ? 'active' : undefined)}
+            onClick={closeMenu}
+          >
+            Projects
+          </NavLink>
+          <NavLink to="/education" end onClick={closeMenu}>Education</NavLink>
+          <NavLink className="nav-contact" to="/contact" end onClick={closeMenu}>Contact <span aria-hidden="true">↗</span></NavLink>
+        </nav>
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/education" element={<EducationPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/react-project" element={<ReactProject />} />
+        <Route path="/skills/:skillId" element={<SkillDetail />} />
+      </Routes> 
+      <Fooster />
+    </div>
   )
 }
 
